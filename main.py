@@ -1,6 +1,5 @@
 import tkinter as tk
 from classes import Game
-import time
 
 def main():
     # Create the main window
@@ -19,10 +18,6 @@ def main():
 
     # Initialize the game
     game = Game(player1_name, player2_name)
-
-    # Variables to handle 'r' button logic
-    last_r_press_time = 0
-    r_threshold = 500  # Time threshold in milliseconds for double 'r' press
 
     # Fonts
     score_font = "Impact"
@@ -81,9 +76,7 @@ def main():
 
     # Event handlers for key presses
     def on_key_press(event):
-        nonlocal last_r_press_time
-        key = event.char
-        current_time = int(time.time() * 1000)
+        key = event.char.lower()
 
         if key == '1':
             game.add_point(1)
@@ -91,16 +84,13 @@ def main():
         elif key == '2':
             game.add_point(2)
             update_scores()
+        elif key == 'u':
+            game.undo_last_action()
+            update_scores()
         elif key == 'r':
-            if current_time - last_r_press_time <= r_threshold:
-                game.reset_game()
-                last_r_press_time = 0
-                update_scores()
-            else:
-                game.undo_last_action()
-                last_r_press_time = current_time
-                update_scores()
-        elif key == '\x1b':  # Escape key
+            game.reset_game()
+            update_scores()
+        elif key == 'q':
             exit_application()
 
     # Function to exit the application gracefully
@@ -109,7 +99,6 @@ def main():
 
     # Bind key presses to the root window
     root.bind('<KeyPress>', on_key_press)
-    root.bind('<Escape>', exit_application)
     root.protocol("WM_DELETE_WINDOW", exit_application)
 
     # Set a background color to mimic a scoreboard
