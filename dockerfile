@@ -8,13 +8,15 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install any required packages
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && \
+    apt-get install -y python3-tk xvfb && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install Tkinter (for GUI) for Debian-based distributions
-RUN apt-get update && apt-get install -y python3-tk
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Make the container's port available to the outside
 EXPOSE 8000
 
-# Run main.py when the container launches
-CMD ["python", "main.py"]
+# Run Xvfb and then start the application
+CMD ["xvfb-run", "python", "main.py"]
