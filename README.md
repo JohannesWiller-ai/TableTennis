@@ -15,6 +15,8 @@ A graphical score tracking application for table tennis matches, designed to res
     - [2. Create a Virtual Environment](#2-create-a-virtual-environment)
     - [3. Activate the Virtual Environment](#3-activate-the-virtual-environment)
     - [4. Install Dependencies](#4-install-dependencies)
+  - [Docker](#docker)
+    - [1. run docker compose up](#1-run docker compose up)
   - [Usage](#usage)
     - [1. Run the Application](#1-run-the-application)
     - [2. Gameplay Controls](#2-gameplay-controls)
@@ -51,6 +53,8 @@ A graphical score tracking application for table tennis matches, designed to res
 ---
 
 ## Installation
+
+(To run with Docker, skip to the section 'docker')
 
 ### 1. Clone the Repository
 
@@ -106,6 +110,16 @@ pip install -r requirements.txt
 - **For Windows**
 
   `tkinter` is included with the standard Python installer for Windows.
+
+---
+
+## Docker
+
+### 1. run docker compose up
+
+```
+docker compose up
+```
 
 ---
 

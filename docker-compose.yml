@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  TableTennisApp:
+    build: .
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    stdin_open: true   # Equivalent to -i (interactive mode)
+    tty: true          # Equivalent to -t (tty mode)
+    restart: "no"      # Do not restart the container automatically
+
+# equivalent of running docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix your_image_name
+# https://askubuntu.com/questions/1161646/is-it-possible-to-run-docker-container-and-show-its-graphical-application-window
