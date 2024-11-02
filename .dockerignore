@@ -1,0 +1,9 @@
+# .dockerignore
+.git
+*.pyc
+__pycache__/
+venv/
+build/
+dist/
+*.spec
+
