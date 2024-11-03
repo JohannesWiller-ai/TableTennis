@@ -1,0 +1,7 @@
+{
+  "name": "python3",
+  "image" : "mcr.microsoft.com/vscode/devcontainers/python:3.10-buster",
+  "features": {
+  }
+}
+
